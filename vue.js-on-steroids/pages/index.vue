@@ -4,6 +4,8 @@
       <h1 class="title">
         Hello Stas
       </h1>
+      <a href="/users">Users</a>
+      <nuxt-link to="/users">Users</nuxt-link> <!-- catches all clicks and ensures that no request is sent -->
     </div>
   </div>
 </template>
