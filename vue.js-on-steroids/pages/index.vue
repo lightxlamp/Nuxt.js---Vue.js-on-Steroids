@@ -22,9 +22,9 @@ export default {
     }
   },
   // this. does not work with asyncData. Because it AsyncData runs before "this" component is actually created
-  asyncData(ctx, cb) {
-    setTimeout(() => {
-      callback(null, {
+  async asyncData() {
+    await setTimeout(() => {
+    return {
         loadedPosts: [       
         { id: '1', 
           title: "Hey Stas",
@@ -42,8 +42,8 @@ export default {
           thumbnail: "https://m.economictimes.com/thumb/msid-74211022,width-1200,height-900,resizemode-4,imgsize-743396/quantum-computing.jpg"
         }
       ]
-    });
-  }, 1500);
+    };
+  }, 2000);
 },
 
   created() {
