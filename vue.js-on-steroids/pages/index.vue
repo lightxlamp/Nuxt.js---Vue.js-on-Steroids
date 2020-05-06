@@ -21,6 +21,31 @@ export default {
       loadedPosts: []
     }
   },
+  // this. does not work with asyncData. Because it AsyncData runs before "this" component is actually created
+  asyncData(ctx, cb) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPosts: [       
+        { id: '1', 
+          title: "Hey Stas",
+          previewText: "This is my first Post",
+          thumbnail: "https://www.acq-intl.com/wp-content/uploads/2020/01/tech-cruve.jpg"
+        },
+        { id: '2', 
+          title: "Dynamic second post",
+          previewText: "Dynamically generated second post",
+          thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSlOzmaKIcR2fnhzTNA0fRuV2Eoch8au4nUaIUthUqsjx5VVB1E&usqp=CAU"
+        }, 
+        { id: '3', 
+          title: "Dynamic third post",
+          previewText: "Dynamically generated third post",
+          thumbnail: "https://m.economictimes.com/thumb/msid-74211022,width-1200,height-900,resizemode-4,imgsize-743396/quantum-computing.jpg"
+        }
+      ]
+    });
+  }, 1500);
+},
+
   created() {
     setTimeout(() => {
       this.loadedPosts =       
