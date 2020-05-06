@@ -15,7 +15,7 @@
 
 <script>
 export default {
-    name: 'Post Preview', // helps us with debugging 
+    name: 'PostPreview', // helps us with debugging 
     props: {
         id: { 
             type: String,

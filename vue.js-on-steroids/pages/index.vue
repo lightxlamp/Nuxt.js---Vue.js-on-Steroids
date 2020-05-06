@@ -3,41 +3,47 @@
     <section class="intro">
       <h1>Get the latest tech news</h1>
     </section>
-
-    <section class="featured-posts">    
-      <PostPreview 
-        id="1"
-        thumbnail="https://www.acq-intl.com/wp-content/uploads/2020/01/tech-cruve.jpg"
-        title="Hey Stas"
-        previewText="This is my first Post"
-      />   
-      
-      <PostPreview 
-        id="2"
-        thumbnail="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSlOzmaKIcR2fnhzTNA0fRuV2Eoch8au4nUaIUthUqsjx5VVB1E&usqp=CAU"
-        title="Dynamic second post"
-        previewText="Dynamically generated second post"
-      /> 
-      
-      <PostPreview 
-        id="3"
-        thumbnail="https://m.economictimes.com/thumb/msid-74211022,width-1200,height-900,resizemode-4,imgsize-743396/quantum-computing.jpg"
-        title="Dynamic third post"
-        previewText="Dynamically generated third post"
-      />
-    </section>
-  <!--  <nuxt-link to="/users">Users</nuxt-link> catches all clicks and ensures that no request is sent -->
+    <PostList
+      :posts="loadedPosts"
+     />
   </div>
 </template>
 
 <script>
-import PostPreview from '@/components/Posts/PostPreview'
+import PostList from '@/components/Posts/PostList'
 
 export default {
   components: {
-    PostPreview
+    PostList
+  },
+  data () {
+    return { 
+      loadedPosts: []
+    }
+  },
+  created() {
+    setTimeout(() => {
+      this.loadedPosts =       
+      [{ id: '1', 
+          title: "Hey Stas",
+          previewText: "This is my first Post",
+          thumbnail: "https://www.acq-intl.com/wp-content/uploads/2020/01/tech-cruve.jpg"
+        },
+        { id: '2', 
+          title: "Dynamic second post",
+          previewText: "Dynamically generated second post",
+          thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSlOzmaKIcR2fnhzTNA0fRuV2Eoch8au4nUaIUthUqsjx5VVB1E&usqp=CAU"
+        }, 
+        
+        { id: '3', 
+          title: "Dynamic third post",
+          previewText: "Dynamically generated third post",
+          thumbnail: "https://m.economictimes.com/thumb/msid-74211022,width-1200,height-900,resizemode-4,imgsize-743396/quantum-computing.jpg"
+        }]
+    }, 2000)
   }
 }
+
 </script>
 
 <style scoped>
@@ -70,14 +76,5 @@ export default {
   .intro h1 {
     font-size: 2rem;
   }
-}
-
-.featured-posts {
-  display: flex;
-  padding: 20px;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
 }
 </style>
