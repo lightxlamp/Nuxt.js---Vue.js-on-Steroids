@@ -1,18 +1,38 @@
 <template>
     <div class="single-post-page">
         <section class="post">
-            <h1 class="post-title">Title of the post</h1>
+            <h1 class="post-title">{{ loadedPost.title }}</h1>
             <div class="post-details">
-                <div class="post-detail">Last updated</div>
-                <div class="post-detail">Written by Name</div>
+                <div class="post-detail">Last updated on {{ loadedPost.updatedDate }}</div>
+                <div class="post-detail">Written by {{ loadedPost.author }}</div>
             </div>
-            <p>Content of the post</p>
+            <p class="post-content">{{ loadedPost.content }}</p>
         </section>
         <section class="post-feedback">
             <p>Let me know what u think about the post. Send email to <a href="mailto:stas@mail.com"></a>.</p>
         </section>
     </div>
 </template>
+
+<script>
+export default {
+  async(ctx, cb) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPost: {
+            id: '1', 
+            title: "Hey Stas",
+            previewText: "This is my first Post",
+            author: "Stanislav",
+            updatedDate: new Date(),
+            context: 'Some content text',
+            thumbnail: "https://www.acq-intl.com/wp-content/uploads/2020/01/tech-cruve.jpg"
+        }
+      })
+    }, 1000)
+  }
+}
+</script>
 
 <style scoped>
 .single-post-page {
