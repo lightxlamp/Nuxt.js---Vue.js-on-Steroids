@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 const createStore = () => {
     return new Vuex.Store({
         state: {
-            loadedPosts
+            loadedPosts: []
         },
         mutations: {
             setPosts(state, posts) {
